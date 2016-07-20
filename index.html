@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>OpenLayers - The Removal of Google Closure</title>
+
+    <meta name="description" content="Boundless tech talk about removing Google Closure Library from OpenLayers and transitioning to ES2015 modules.">
+    <meta name="author" content="Andreas Hocevar">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>OpenLayers</h1>
+          <h3>The Removal of Google Closure</h3>
+          <p>
+            <small><a href="https://github.com/ahocevar">Andreas Hocevar</a> / <a href="http://twitter.com/ahoce">@ahoce</a></small>
+          </p>
+          <p>July 21st, 2016</p>
+        </section>
+
+        <section>
+          <h2>June 2012</h2>
+          <p>First OpenLayers 3 sprint in Chambéry, France</p>
+          <p>Camptocamp and Klokan Technologies promote the use of Closure Compiler and Closure Library</p>
+        </section>
+
+        <section>
+          <h2>Why?</h2>
+        </section>
+
+        <section>
+          <h2>Closure Compiler</h2>
+          <p>... is a tool for making JavaScript download and run faster</p>
+          <p>It parses your JavaScript, analyzes it, removes dead code and rewrites and minimizes what's left.</p>
+          <p>It also checks syntax, variable references, and types, and warns about common JavaScript pitfalls.</p>
+        </section>
+
+        <section>
+          <h2>Closure Library</h2>
+          <p>... is a broad, well-tested, modular, and cross-browser JavaScript library</p>
+        </section>
+
+        <section>
+          <p>Sounds great, so why get rid of it?</p>
+        </section>
+
+        <section>
+          <p>"A well-tested library can insulate you from cross-browser compatibility issues and the minutiae of client-side programming, letting you focus on the fun stuff."</p>
+          <br>
+        </section>
+
+        <section>
+          <p>Most cross-browser issues are a problem of the past</p>
+          <p>OpenLayers committers like client-side JavaScript</p>
+        </section>
+
+        <section>
+          <p>"If you are developing a large or growing <b>application</b>, you may benefit from the Closure Library's breadth."</p>
+        </section>
+
+        <section>
+          <p>OpenLayers is a <b>library</b>, not an <b>application</b></p>
+          <img src="img/tmcw-worries.png"></img>
+        </section>
+
+
+        <section>
+          <h2>Problems with Google Closure</h2>
+          <p>Uncommon and complicated build stack</p>
+          <p>Hard to include 3rd party libreries</p>
+          <p>Encourages opt-out to get small builds</p>
+        </section>
+
+        <section>
+          <h2>When use Google Closure?</h2>
+          <p>When building applications!</p>
+          <p>Every line of dead code will be stripped out</p>
+        </section>
+
+        <section>
+          <h2>September 2015</h2>
+          <p>FOSS4G conference, Seoul, South Korea</p>
+          <p>OpenLayers developers decide to remove the dependency on Closure Library and allow the use of mainstream build tools and bundlers.</p>
+          <p>Those who want to use Closure Compiler can still do so.</p>
+        </section>
+
+        <section>
+          <h2>July 2016</h2>
+          <p>Closure Library removal is 95% complete</p>
+          <p>Increased performance with our own lightweight event system and matrix transforms</p>
+        </section>
+
+        <section>
+          <h2>Library size</h2>
+          <p>September 2015: 143 kB gzipped, minified from 3.8 MB</p>
+          <p>July 2016: 140 kB gzipped, minified from 2.9 MB</p>
+          <p>... and the library has grown in terms of features</p>
+        </section>
+
+        <section>
+          <h2>What's next</h2>
+          <p>Use ES2015 modules instead of <code>goog.provide</code>/<code>goog.require</code></p>
+          <p>Details will be discussed in the following weeks</p>
+          <p>Community input welcome</p>
+        </section>
+
+        <section>
+          <h2>What does this mean for users and developers?</h2>
+          <p>Easier to include only what's needed</p>
+          <p>Lower entry barrier to using and contributing to the library</p>
+          <p>Free choice of build tools and bundlers</p>
+        </section>
+
+        <section>
+          <h2>Reference</h2>
+          <p>Closure Library removal: <a href="https://github.com/openlayers/ol3/issues/4128">#4128</a></p>
+          <p>Switch to ES2015 modules: <a href="https://github.com/openlayers/ol3/issues/5623">#5623</a></p>
+          <br>
+          <p><a href="http://ahocevar.net/openlayers-remove-google-closure/">http://ahocevar.net/openlayers-remove-google-closure/</a></p>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
